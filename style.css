@@ -1,0 +1,195 @@
+/*
+colors
+bg #FFFFFF
+orange  #CF4F13
+black #000000
+ms-opacity 0.74
+btn-opacity 0.68
+num-btn-opacity 0.52
+*/  
+
+body {
+   background-image: image-set(
+      'bg2560x1080.jpeg' 1x,
+      'bg2880x1620.jpeg' 2x
+   );
+}
+
+.calculator {
+   margin: 8vh auto;
+   top: 8vh;
+   height: 70vh; 
+   width: 50vh;
+   border: 0,25vh solid #000;
+   border-radius: 3vh;
+   background: rgba(0, 0, 0, 0.67);
+   color: #fff;
+   font-family: "Helvetica", "Tahoma", sans-serif;
+   box-shadow: 1.5vh 3vh 3vh rgba(0, 0, 0, 0.47);
+}
+
+.window-buttons {
+   display: inline;
+}
+
+.circle-btn {
+   margin: 1.5vh 0 0 1.5vh;
+   height: 2.5vh;
+   width: 2.5vh;
+   border: none;
+   border-radius: 50%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #000;
+   cursor: pointer;
+   user-select: none;
+   font-size: 0rem;
+   float:left;
+    
+}
+
+.circle-btn.exit {
+   background-color: #EC6A5E; 
+}
+
+.circle-btn.close {
+    background-color: #F4BF4F;
+}
+
+.animate-exit {
+   animation: opacity 3s both;
+   
+}
+
+.animate-close {
+animation: y 10s cubic-bezier(1, 0.04, 1, 1) forwards;
+animation-delay: 0 0 0;
+}
+   
+@keyframes y {
+   90% {
+      transform: translate(50vh, 50vw, 50vh);
+      
+      transform: scale(0.1);
+   }
+  
+}
+
+@keyframes x {
+   90% {
+      transform: translateX(50vw);
+   }
+  
+}
+
+@keyframes scale {
+   90% {
+      transform: scale(0.1);
+   }
+   
+}
+
+@keyframes opacity {
+   0% {
+      opacity: 1;
+   }
+   50% {
+      opacity: 0;
+   }
+   100% {
+      opacity: 1;
+   }
+}
+
+.circle-btn.zoom {
+    background-color: #61C554;
+}
+
+.circle-btn:hover {
+    font-size: 3vh;
+}
+
+.result-screen {
+   height: 13.2vh;
+   width: 48vh;
+   padding: 1vh;
+   display: grid;
+   justify-items: end;
+   align-items: end;
+}
+
+.out {
+   overflow: hidden;
+   border: none;
+   width: 100%;
+   height: 100%;
+   white-space: nowrap;
+   line-height: 1;
+   background: none;
+   resize: none;
+   color: #fff;
+   text-align: right;
+   font-size: 10vh;
+}
+
+.buttons {
+   display: grid;
+   grid-template-areas: 
+   "ac plus-minus percent divide"
+   "seven eight nine multiply"
+   "four five six minus"
+   "one two three plus"
+   "zero zero comma equals";
+   grid-gap: 0.18vh;
+}
+
+.btn {
+   width: 12.3vh;
+   height: 10vh;
+   border: none;
+   background: rgba(255, 255, 255, 0.39);
+   color: #fff;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 5vh;
+   cursor: pointer;
+   user-select: none;
+}
+
+.btn.zero {
+   grid-area: zero;
+   width: 100%;
+   border-radius: 0 0 0 3vh;
+}
+
+.btn.equals {
+   border-radius: 0 0 3vh 0;
+}
+
+.btn:active {
+   background-color: rgba(255, 255, 255, 0.70);
+}
+
+.btn.bg-grey {
+    background-color: rgba(255, 255, 255, 0.19);
+}
+
+.btn.bg-grey:active {
+    background-color: rgba(255, 255, 255, 0.39);
+}
+
+.btn.bg-orange {
+   background-color: #FF9F0B;
+}
+
+.btn.bg-orange:active {
+   background-color: #BE802D;
+}
+
+.btn.bg-orange.chosen-mode {
+   width: 11.8vh;
+   height: 9.6vh;
+}
+

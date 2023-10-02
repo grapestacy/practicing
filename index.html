@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html" />
+        <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, width=device-width">
+        <title>Calculator</title>
+        <link rel="stylesheet" href="style.css">
+         <script src="calc.js" async></script>
+    </head>
+    <body>
+        
+        <div class="calculator" onclick="checkSize()">
+            <div class="window-buttons">
+                <button data-action="exit" class="circle-btn exit" onclick="setAnimaton('animate-exit')">x</button>
+                <button data-action="close" class="circle-btn close" onclick="setAnimaton('animate-close')">-</button>
+                <button data-action="zoom" class="circle-btn zoom">+</button>
+            </div>
+            <script>
+
+                let calculator = document.querySelector(".calculator");
+                console.log(calculator);
+                
+                function setAnimaton(animation) {
+                    calculator.classList.toggle(animation);
+                    calculator.addEventListener('animationend', animationEndCallback);
+                }
+
+                let animationEndCallback = (animationEvent) => {
+                    console.log('suckk');
+                    calculator.removeEventListener('animationend', animationEndCallback);
+                    calculator.classList.remove(animationEvent.target.classList[1]);
+                }
+            </script>
+
+            <div class="result-screen">
+                <textarea disabled class="out">0</textarea>
+                <script>
+                    const isOverflown = ({ clientWidth, scrollWidth }) => clientWidth > scrollWidth;
+
+                    let i = 0;
+                    let overflow = false;
+                    let output = document.querySelector('.out');
+                    const checkSize = () => {
+        
+                        let style = window.getComputedStyle(out, null).getPropertyValue('font-size');
+                        let fontSize = parseFloat(style); 
+
+                        if (output.scrollWidth > output.offsetWidth) {
+                            output.style.fontSize = `${fontSize - 10}px`;
+                            console.log('overflowed');
+
+                    }
+                }
+                
+                </script>
+            </div>
+            <div class="buttons">
+                <button data-action="ac" class="btn ac bg-grey" onclick="chooseButton('equals')">AC</button>
+                <button data-action="sign" class="btn plus-minus bg-grey">+/-</button>
+                <button data-action="percent" class="btn percent bg-grey">%</button>
+                <button id='divide' data-action="divide" class="btn divide bg-orange" onclick="chooseButton(this.id)">/</button>
+
+                <button data-action="7" class="btn seven">7</button>
+                <button data-action="8" class="btn eight">8</button>
+                <button data-action="9" class="btn nine">9</button>
+                <button id="multiply" data-action="multiply" class="btn multiply bg-orange" onclick="chooseButton(this.id)">x</button>
+
+                <button data-action="4" class="btn four">4</button>
+                <button data-action="5" class="btn 5">5</button>
+                <button data-action="6" class="btn six">6</button>
+                <button id="minus" data-action="minus" class="btn minus bg-orange" onclick="chooseButton(this.id)">-</button>
+
+                <button data-action="1" class="btn one">1</button>
+                <button data-action="2" class="btn two">2</button>
+                <button data-action="3" class="btn three">3</button>
+                <button id="plus" data-action="plus" class="btn plus bg-orange" onclick="chooseButton(this.id)">+</button>
+
+                <button data-action="0" class="btn zero">0</button>
+                <button data-action="." class="btn comma ">,</button>
+                <button id="equals" data-action="equals" class="btn equals bg-orange" onclick="chooseButton(this.id)">=</button>
+
+                <script>
+                    function chooseButton(someId) {
+                        [...document.querySelectorAll('.bg-orange')].forEach(element => {
+                            if(element.id != 'equals') {
+                                console.log(element.id);
+                                element.className = (someId == element.id) ? 'btn bg-orange chosen-mode' : 'btn bg-orange';
+                               }
+                            else {
+                                element.className = (someId != element.id) ? 'btn bg-orange' : 'btn equals bg-orange';
+                                document.getElementById('equals').className = 'btn equals bg-orange';
+                            }
+                        });
+                    }
+                    </script>
+            </div>
+
+        </div>
+    </body>
+    <footer>
+    </footer>
+
+</html>
